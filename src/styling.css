@@ -389,7 +389,6 @@ li {
 }
 
 .bright {
-  
   animation: bright 2s linear forwards;
 }
 
@@ -403,11 +402,12 @@ li {
   50% {
     opacity: 0.5;
   }
-  75%{
+  75% {
     opacity: 0.25;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
+    background-color: transparent;
   }
 }
 
