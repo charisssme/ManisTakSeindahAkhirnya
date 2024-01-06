@@ -32,6 +32,42 @@
           width: 100vw;
         "
       >
+        <audio
+          id="backsound"
+          loop
+          src="../assets/Divine Life Society - Jesse Gallagher.mp3"
+        ></audio>
+        <img
+          id="BGMPlay"
+          src="../assets/pause.svg"
+          alt="audio controls"
+          style="
+            width: 30px;
+            background-color: #57aeda;
+            border-radius: 50%;
+            padding: 5px;
+            position: fixed;
+            top: 1%;
+            left: 1%;
+          "
+          onclick="audioPlay(this)"
+        />
+        <img
+          id="BGMPause"
+          src="../assets/play.svg"
+          alt="audio controls"
+          style="
+            width: 30px;
+            background-color: #57aeda;
+            border-radius: 50%;
+            padding: 5px;
+            position: fixed;
+            top: 1%;
+            left: 1%;
+            display: none;
+          "
+          onclick="audioPause(this)"
+        />
         <!-- modal collection -->
         <div id="quiz1" style="display: block" class="modal slide-in">
           <div
@@ -372,6 +408,16 @@
       }
       function benar5() {
         document.getElementById("benar5").style.display = "block";
+      }
+      var sound = document.getElementById("backsound");
+      function audioPlay(img) {
+        sound.play();
+        sound.volume = 0.35;
+        document.getElementById("BGMPause").style.display = "block";
+      }
+      function audioPause(img) {
+        sound.pause();
+        document.getElementById("BGMPause").style.display = "none";
       }
     </script>
   </body>

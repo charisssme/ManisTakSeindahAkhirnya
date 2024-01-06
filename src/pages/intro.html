@@ -32,6 +32,42 @@
           width: 100vw;
         "
       >
+        <audio
+          id="backsound"
+          loop
+          src="../assets/Divine Life Society - Jesse Gallagher.mp3"
+        ></audio>
+        <img
+          id="BGMPlay"
+          src="../assets/pause.svg"
+          alt="audio controls"
+          style="
+            width: 30px;
+            background-color: #57aeda;
+            border-radius: 50%;
+            padding: 5px;
+            position: fixed;
+            top: 1%;
+            left: 1%;
+          "
+          onclick="audioPlay(this)"
+        />
+        <img
+          id="BGMPause"
+          src="../assets/play.svg"
+          alt="audio controls"
+          style="
+            width: 30px;
+            background-color: #57aeda;
+            border-radius: 50%;
+            padding: 5px;
+            position: fixed;
+            top: 1%;
+            left: 1%;
+            display: none;
+          "
+          onclick="audioPause(this)"
+        />
         <img
           src="../assets/char/senyum.svg"
           id="senyum"
@@ -41,7 +77,7 @@
             position: fixed;
             bottom: 1%;
             left: 1%;
-            --dur: 1s;
+            --dur: 0.7s;
             --delay: 0s;
             align-self: center;
             display: block;
@@ -56,7 +92,7 @@
             position: fixed;
             bottom: 1%;
             left: 1%;
-            --dur: 1s;
+            --dur: 0.7s;
             --delay: 0s;
             align-self: center;
             display: none;
@@ -71,7 +107,7 @@
             position: fixed;
             bottom: 1%;
             left: 1%;
-            --dur: 1s;
+            --dur: 0.7s;
             --delay: 0s;
             align-self: center;
             display: none;
@@ -79,7 +115,7 @@
         />
         <div
           class="talk-bubble tri-right round left-top fade-in-left border"
-          style="--dur: 2s; --delay: 1s"
+          style="--dur: 1s; --delay: 0.5s"
           id="1"
           onclick="show2()"
         >
@@ -92,7 +128,7 @@
         </div>
         <div
           class="talk-bubble tri-right round left-top fade-in-left border"
-          style="--dur: 2s; --delay: 0s; display: none"
+          style="--dur: 1s; --delay: 0s; display: none"
           id="2"
           onclick="show3()"
         >
@@ -105,7 +141,7 @@
         </div>
         <div
           class="talk-bubble tri-right round left-top fade-in-left border"
-          style="--dur: 2s; --delay: 1s; display: none"
+          style="--dur: 1s; --delay: 0s; display: none"
           id="3"
           onclick="show4()"
         >
@@ -119,7 +155,7 @@
         </div>
         <div
           class="talk-bubble tri-right round left-top fade-in-left border"
-          style="--dur: 2s; --delay: 0s; display: none"
+          style="--dur: 1s; --delay: 0s; display: none"
           id="4"
           onclick="show5()"
         >
@@ -148,7 +184,7 @@
             right: 1%;
             width: 12vw;
             --dur: 1.5s;
-            --delay: 2s;
+            --delay: 0s;
             display: none;
           "
           id="lanjut"
@@ -202,6 +238,16 @@
         document.getElementById("berpikir").style.display = "block";
         document.getElementById("senyum").style.display = "none";
         document.getElementById("lanjut").style.display = "block";
+      }
+      var sound = document.getElementById("backsound");
+      function audioPlay(img) {
+        sound.play();
+        sound.volume = 0.35;
+        document.getElementById("BGMPause").style.display = "block";
+      }
+      function audioPause(img) {
+        sound.pause();
+        document.getElementById("BGMPause").style.display = "none";
       }
     </script>
   </body>
