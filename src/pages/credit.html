@@ -52,6 +52,7 @@
             position: fixed;
             top: 1%;
             left: 1%;
+            display: none;
           "
           onclick="audioPlay(this)"
         />
@@ -67,7 +68,7 @@
             position: fixed;
             top: 1%;
             left: 1%;
-            display: none;
+            display: block;
           "
           onclick="audioPause(this)"
         />
@@ -114,11 +115,12 @@
       var sound = document.getElementById("backsound");
       function audioPlay(img) {
         sound.play();
-        document.getElementById("BGMPause").style.display = "block";
+        document.getElementById("BGMPause").style.display = "Block";
       }
       function audioPause(img) {
         sound.pause();
         document.getElementById("BGMPause").style.display = "none";
+        document.getElementById("BGMPlay").style.display = "block";
       }
     </script>
   </body>
