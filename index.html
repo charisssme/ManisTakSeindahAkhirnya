@@ -31,6 +31,7 @@
           height: 100vh;
         "
       >
+        <audio id="clicked" src="./src/assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -72,9 +73,8 @@
           src="./src/assets/title.png"
           alt="Title"
         />
-        <a href="./src/pages/introduce.html"
+        <a href="./src/pages/introduce.html" id="startBtn"
           ><img
-            id="startBtn"
             style="width: 20vw; height: 10vh"
             src="./src/assets/startBtn.svg"
             alt="Start Button"
@@ -111,6 +111,43 @@
       function startBtnRelease() {
         document.getElementById("startBtn").src = "./src/assets/startBtn.svg";
       }
+      // document.getElementById("startBtn").onclick = function () {
+      //   document.getElementById("clicked").play();
+      //   location.href = this.href;
+      // };
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 250);
+      }
+      document.getElementById("startBtn").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
 
       var sound = document.getElementById("backsound");
       function audioPlay(img) {

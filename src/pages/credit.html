@@ -33,8 +33,10 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
+          autoplay
           loop
           src="../assets/Divine Life Society - Jesse Gallagher.mp3"
         ></audio>
@@ -112,7 +114,6 @@
       var sound = document.getElementById("backsound");
       function audioPlay(img) {
         sound.play();
-        sound.volume = 0.35;
         document.getElementById("BGMPause").style.display = "block";
       }
       function audioPause(img) {

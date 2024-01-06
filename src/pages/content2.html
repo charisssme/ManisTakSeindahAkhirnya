@@ -32,6 +32,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -49,6 +50,7 @@
             position: fixed;
             top: 1%;
             left: 1%;
+            z-index: 2;
           "
           onclick="audioPlay(this)"
         />
@@ -65,6 +67,7 @@
             top: 1%;
             left: 1%;
             display: none;
+            z-index: 2;
           "
           onclick="audioPause(this)"
         />
@@ -241,25 +244,62 @@
       </div>
     </div>
     <script>
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 0);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       function page1() {
+        document.getElementById("clicked").play();
         document.getElementById("pageOne").style.display = "block";
         document.getElementById("pageTwo").style.display = "none";
         document.getElementById("pageThree").style.display = "none";
         document.getElementById("pageFour").style.display = "none";
       }
       function page2() {
+        document.getElementById("clicked").play();
         document.getElementById("pageOne").style.display = "none";
         document.getElementById("pageThree").style.display = "none";
         document.getElementById("pageTwo").style.display = "block";
         document.getElementById("pageFour").style.display = "none";
       }
       function page3() {
+        document.getElementById("clicked").play();
         document.getElementById("pageOne").style.display = "none";
         document.getElementById("pageTwo").style.display = "none";
         document.getElementById("pageFour").style.display = "none";
         document.getElementById("pageThree").style.display = "block";
       }
       function page4() {
+        document.getElementById("clicked").play();
         document.getElementById("pageOne").style.display = "none";
         document.getElementById("pageTwo").style.display = "none";
         document.getElementById("pageThree").style.display = "none";

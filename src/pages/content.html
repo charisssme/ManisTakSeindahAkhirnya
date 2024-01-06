@@ -32,6 +32,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -726,19 +727,55 @@
       carousel5();
       carousel6();
       carousel7();
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 0);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       // bagian nasi
       function showNasi() {
         document.getElementById("modalNasi").style.display = "block";
         document.getElementById("pageOne").style.display = "block";
         document.getElementById("pageTwo").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page1() {
         document.getElementById("pageOne").style.display = "block";
         document.getElementById("pageTwo").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page2() {
         document.getElementById("pageOne").style.display = "none";
         document.getElementById("pageTwo").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel() {
         var i;
@@ -758,14 +795,17 @@
         document.getElementById("modalKemasan").style.display = "block";
         document.getElementById("page2_1").style.display = "block";
         document.getElementById("page2_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page21() {
         document.getElementById("page2_1").style.display = "block";
         document.getElementById("page2_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page22() {
         document.getElementById("page2_1").style.display = "none";
         document.getElementById("page2_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel2() {
         var i;
@@ -785,14 +825,17 @@
         document.getElementById("modalBuahKering").style.display = "block";
         document.getElementById("page3_1").style.display = "block";
         document.getElementById("page3_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page31() {
         document.getElementById("page3_1").style.display = "block";
         document.getElementById("page3_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page32() {
         document.getElementById("page3_1").style.display = "none";
         document.getElementById("page3_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel3() {
         var i;
@@ -812,14 +855,17 @@
         document.getElementById("modalLemak").style.display = "block";
         document.getElementById("page4_1").style.display = "block";
         document.getElementById("page4_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page41() {
         document.getElementById("page4_1").style.display = "block";
         document.getElementById("page4_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page42() {
         document.getElementById("page4_1").style.display = "none";
         document.getElementById("page4_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel4() {
         var i;
@@ -839,14 +885,17 @@
         document.getElementById("modalEnergi").style.display = "block";
         document.getElementById("page5_1").style.display = "block";
         document.getElementById("page5_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page51() {
         document.getElementById("page5_1").style.display = "block";
         document.getElementById("page5_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page52() {
         document.getElementById("page5_1").style.display = "none";
         document.getElementById("page5_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel5() {
         var i;
@@ -866,14 +915,17 @@
         document.getElementById("modalAlkohol").style.display = "block";
         document.getElementById("page6_1").style.display = "block";
         document.getElementById("page6_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page61() {
         document.getElementById("page6_1").style.display = "block";
         document.getElementById("page6_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page62() {
         document.getElementById("page6_1").style.display = "none";
         document.getElementById("page6_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel6() {
         var i;
@@ -895,14 +947,17 @@
         document.getElementById("page7_1").style.display = "block";
         document.getElementById("page7_2").style.display = "none";
         document.getElementById("lanjut").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function page71() {
         document.getElementById("page7_1").style.display = "block";
         document.getElementById("page7_2").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function page72() {
         document.getElementById("page7_1").style.display = "none";
         document.getElementById("page7_2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function carousel7() {
         var i;

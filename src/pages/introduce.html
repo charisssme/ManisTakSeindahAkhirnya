@@ -32,6 +32,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -196,7 +197,7 @@
             display: none;
           "
           id="lanjut"
-          ><img src="../assets/ljtBtn.svg" alt="lanjut button"
+          ><img src="../assets/ljtBtn.svg" id="next" alt="lanjut button"
         /></a>
       </div>
       <div
@@ -220,6 +221,39 @@
     </div>
     <script>
       var header = document.getElementById("list");
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 0);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       function show1() {
         document.getElementById("1").style.display = "block";
         document.getElementById("2").style.display = "none";
@@ -230,6 +264,7 @@
         document.getElementById("5").style.display = "none";
         document.getElementById("senyum").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function show2() {
         document.getElementById("1").style.display = "none";
@@ -241,6 +276,7 @@
         document.getElementById("5").style.display = "none";
         document.getElementById("senyum").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function show3() {
         document.getElementById("2").style.display = "none";
@@ -252,6 +288,7 @@
         document.getElementById("5").style.display = "none";
         document.getElementById("senyum").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function show4() {
         document.getElementById("3").style.display = "none";
@@ -263,6 +300,7 @@
         document.getElementById("5").style.display = "none";
         document.getElementById("senyum").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
+        document.getElementById("clicked").play();
       }
       function show5() {
         document.getElementById("4").style.display = "none";
@@ -275,6 +313,7 @@
         document.getElementById("1").style.display = "none";
         document.getElementById("2").style.display = "none";
         document.getElementById("3").style.display = "none";
+        document.getElementById("clicked").play();
       }
       var btns = header.getElementsByClassName("btn");
       for (var i = 0; i < btns.length; i++) {

@@ -32,6 +32,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -49,6 +50,7 @@
             position: fixed;
             top: 1%;
             left: 1%;
+            z-index: 2;
           "
           onclick="audioPlay(this)"
         />
@@ -65,20 +67,21 @@
             top: 1%;
             left: 1%;
             display: none;
+            z-index: 2;
           "
           onclick="audioPause(this)"
         />
         <!-- modal collection -->
-        <div id="quiz1" style="display: block" class="modal slide-in">
+        <div id="quiz1" style="display: block" class="content-modal slide-in">
           <div
             class="container content-body"
-            style="width: 95%; height: auto; --fd: column; --ai: center"
+            style="width: 60%; height: auto; --fd: column; --ai: center"
           >
             <h1 style="align-self: flex-start">Soal 1</h1>
-            <p style="text-align: center">
+            <h4 style="text-align: center; font-size: 2em">
               Dibawah ini, apa makanan yang harus dihindari untuk mencegah
               diabetes?
-            </p>
+            </h4>
             <div class="container" style="--fd: column; width: 100%">
               <div class="container" style="--fd: row; width: 100%">
                 <div class="quiz-option" onclick="benar1()">
@@ -101,10 +104,10 @@
             </div>
           </div>
         </div>
-        <div id="quiz2" style="display: none" class="modal slide-in">
+        <div id="quiz2" style="display: none" class="content-modal slide-in">
           <div
             class="container content-body"
-            style="width: 95%; height: auto; --fd: column; --ai: center"
+            style="width: 60%; height: auto; --fd: column; --ai: center"
           >
             <h1 style="align-self: flex-start">Soal 2</h1>
             <div style="display: flex; justify-content: center">
@@ -115,9 +118,9 @@
               />
             </div>
 
-            <p style="text-align: center">
+            <h4 style="text-align: center">
               Gambar di atas menunjukkan makanan dengan kandungan apa?
-            </p>
+            </h4>
             <div class="container" style="--fd: column; width: 100%">
               <div class="container" style="--fd: row; width: 100%">
                 <div class="quiz-option" onclick="salah()">
@@ -140,10 +143,10 @@
             </div>
           </div>
         </div>
-        <div id="quiz3" style="display: none" class="modal slide-in">
+        <div id="quiz3" style="display: none" class="content-modal slide-in">
           <div
             class="container content-body"
-            style="width: 95%; height: auto; --fd: column; --ai: center"
+            style="width: 60%; height: auto; --fd: column; --ai: center"
           >
             <h1 style="align-self: flex-start">Soal 3</h1>
             <div style="display: flex; justify-content: center">
@@ -154,9 +157,9 @@
               />
             </div>
 
-            <p style="text-align: center">
+            <h4 style="text-align: center">
               Potongan gambar di atas tuh apa ya?
-            </p>
+            </h4>
             <div class="container" style="--fd: column; width: 100%">
               <div class="container" style="--fd: row; width: 100%">
                 <div class="quiz-option" onclick="salah()">
@@ -179,16 +182,16 @@
             </div>
           </div>
         </div>
-        <div id="quiz4" style="display: none" class="modal slide-in">
+        <div id="quiz4" style="display: none" class="content-modal slide-in">
           <div
             class="container content-body"
-            style="width: 95%; height: auto; --fd: column; --ai: center"
+            style="width: 60%; height: auto; --fd: column; --ai: center"
           >
             <h1 style="align-self: flex-start">Soal 4</h1>
-            <p style="text-align: center">
+            <h4 style="text-align: center">
               Apa yang akan terjadi jika seseorang terlalu sering minum minuman
               berenergi?
-            </p>
+            </h4>
             <div class="container" style="--fd: column; width: 100%">
               <div class="container" style="--fd: row; width: 100%">
                 <div class="quiz-option" onclick="salah()">
@@ -211,10 +214,10 @@
             </div>
           </div>
         </div>
-        <div id="quiz5" style="display: none" class="modal slide-in">
+        <div id="quiz5" style="display: none" class="content-modal slide-in">
           <div
             class="container content-body"
-            style="width: 95%; height: auto; --fd: column; --ai: center"
+            style="width: 60%; height: auto; --fd: column; --ai: center"
           >
             <h1 style="align-self: flex-start">Soal 5</h1>
             <div style="display: flex; justify-content: center">
@@ -225,10 +228,10 @@
               />
             </div>
 
-            <p style="text-align: center">
+            <h4 style="text-align: center">
               Apa yang bakal terjadi kalau seseorang terlalu sering mengonsumsi
               gambar di atas?
-            </p>
+            </h4>
             <div class="container" style="--fd: column; width: 100%">
               <div class="container" style="--fd: row; width: 100%">
                 <div class="quiz-option" onclick="benar5()">
@@ -251,7 +254,11 @@
             </div>
           </div>
         </div>
-        <div id="salah" style="display: none" class="modal slide-in">
+        <div
+          id="salah"
+          style="display: none; padding-top: 30vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
@@ -265,11 +272,16 @@
               src="../assets/again.png"
               alt=""
               style="bottom: 10%; width: 12vw"
-              onclick="document.getElementById('salah').style.display='none'"
+              onclick="document.getElementById('salah').style.display='none';
+              document.getElementById('clicked').play();"
             />
           </div>
         </div>
-        <div id="benar1" style="display: none" class="modal slide-in">
+        <div
+          id="benar1"
+          style="display: none; padding-top: 30vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
@@ -283,11 +295,16 @@
               src="../assets/ljtBtn.svg"
               alt=""
               style="bottom: 5%; width: 12vw"
-              onclick="document.getElementById('quiz1').style.display='none';document.getElementById('benar1').style.display='none';document.getElementById('quiz2').style.display='block'"
+              onclick="document.getElementById('quiz1').style.display='none';document.getElementById('benar1').style.display='none';document.getElementById('quiz2').style.display='block';
+              document.getElementById('clicked').play();"
             />
           </div>
         </div>
-        <div id="benar2" style="display: none" class="modal slide-in">
+        <div
+          id="benar2"
+          style="display: none; padding-top: 30vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
@@ -301,11 +318,16 @@
               src="../assets/ljtBtn.svg"
               alt=""
               style="bottom: 5%; width: 12vw"
-              onclick="document.getElementById('quiz2').style.display='none';document.getElementById('benar2').style.display='none';document.getElementById('quiz3').style.display='block'"
+              onclick="document.getElementById('quiz2').style.display='none';document.getElementById('benar2').style.display='none';document.getElementById('quiz3').style.display='block';
+              document.getElementById('clicked').play();"
             />
           </div>
         </div>
-        <div id="benar3" style="display: none" class="modal slide-in">
+        <div
+          id="benar3"
+          style="display: none; padding-top: 30vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
@@ -319,11 +341,16 @@
               src="../assets/ljtBtn.svg"
               alt=""
               style="bottom: 5%; width: 12vw"
-              onclick="document.getElementById('quiz3').style.display='none';document.getElementById('benar3').style.display='none';document.getElementById('quiz4').style.display='block'"
+              onclick="document.getElementById('quiz3').style.display='none';document.getElementById('benar3').style.display='none';document.getElementById('quiz4').style.display='block';
+              document.getElementById('clicked').play();"
             />
           </div>
         </div>
-        <div id="benar4" style="display: none" class="modal slide-in">
+        <div
+          id="benar4"
+          style="display: none; padding-top: 30vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
@@ -337,16 +364,21 @@
               src="../assets/ljtBtn.svg"
               alt=""
               style="bottom: 5%; width: 12vw"
-              onclick="document.getElementById('quiz4').style.display='none';document.getElementById('benar4').style.display='none';document.getElementById('quiz5').style.display='block'"
+              onclick="document.getElementById('quiz4').style.display='none';document.getElementById('benar4').style.display='none';document.getElementById('quiz5').style.display='block';
+          document.getElementById('clicked').play();"
             />
           </div>
         </div>
-        <div id="benar5" style="display: none" class="modal slide-in">
+        <div
+          id="benar5"
+          style="display: none; padding-top: 10vh"
+          class="content-modal slide-in"
+        >
           <div
             class="container content-body"
             style="width: 40%; height: auto; --fd: column; --ai: center"
           >
-            <img src="../assets/benar.png" alt="" style="width: 20vw" />
+            <img src="../assets/benar.png" alt="" style="width: 15vw" />
             <p style="text-align: center; text-indent: 0">
               Gimana kuisnya? Susah nggak? Atau gampang banget? Berapa soal kamu
               jawab dengan benar? Semoga kuis tadi dapat bermanfaat untuk kamu
@@ -391,23 +423,62 @@
       </div>
     </div>
     <script>
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 0);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       function salah() {
         document.getElementById("salah").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function benar1() {
         document.getElementById("benar1").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function benar2() {
         document.getElementById("benar2").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function benar3() {
         document.getElementById("benar3").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function benar4() {
         document.getElementById("benar4").style.display = "block";
+        document.getElementById("clicked").play();
       }
       function benar5() {
         document.getElementById("benar5").style.display = "block";
+        document.getElementById("clicked").play();
       }
       var sound = document.getElementById("backsound");
       function audioPlay(img) {

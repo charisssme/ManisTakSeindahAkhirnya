@@ -34,6 +34,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -72,7 +73,21 @@
         />
         <div id="contain">
           <h1 style="text-align: center">Saran untuk Penderita Diabetes</h1>
-          <div id="video" style="margin: 50px auto; max-width: 70vw">
+          <div
+            id="video"
+            style="
+              margin: 50px auto;
+              max-width: 70vw;
+              border: 15px solid;
+              border-image-slice: 1;
+              border-image-source: linear-gradient(
+                to bottom right,
+                #084270,
+                #b1cbd9,
+                #084270
+              );
+            "
+          >
             <video preload="auto" controls crossorigin playsinline>
               <source src="../assets/video/saran2.mp4" type="video/mp4" />
             </video>
@@ -87,7 +102,7 @@
             right: 1%;
             width: 12vw;
             --dur: 1.5s;
-            --delay: 2s;
+            --delay: 0.5s;
             display: none;
           "
           id="lanjut"
@@ -114,6 +129,39 @@
       </div>
     </div>
     <script>
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 0);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       document.getElementById("video").addEventListener(
         "ended",
         function () {

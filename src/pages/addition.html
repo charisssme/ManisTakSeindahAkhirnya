@@ -32,6 +32,7 @@
           width: 100vw;
         "
       >
+        <audio id="clicked" src="../assets/clicked.mp3"></audio>
         <audio
           id="backsound"
           loop
@@ -335,7 +336,7 @@
             right: 1%;
             width: 12vw;
             --dur: 1.5s;
-            --delay: 1s;
+            --delay: 0.5s;
             display: none;
           "
           id="lanjut"
@@ -363,7 +364,41 @@
     </div>
     <script>
       var header = document.getElementById("list");
+      function play_single_sound(target) {
+        document.getElementById(target).play();
+      }
+
+      function newPage(url) {
+        location.href = url;
+      }
+
+      function playThenRedirectTo(audioTarget, url) {
+        var time = 0;
+
+        play_single_sound(audioTarget);
+
+        setInterval(function () {
+          var end = document.getElementById(audioTarget).played.end(0);
+          if (end > time) {
+            time = end;
+          } else {
+            newPage(url);
+          }
+        }, 250);
+      }
+      document.getElementById("lanjut").onclick = function (evt) {
+        evt = evt || window.event;
+
+        playThenRedirectTo("clicked", this.href);
+        // prevent the link from being followed, until we want to later on
+        if (evt.preventDefault) {
+          evt.preventDefault();
+        } else {
+          evt.returnValue = false;
+        }
+      };
       function show1() {
+        document.getElementById("clicked").play();
         document.getElementById("1").style.display = "block";
         document.getElementById("oke").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -384,6 +419,7 @@
         document.getElementById("kanan").style.display = "none";
       }
       function show2() {
+        document.getElementById("clicked").play();
         document.getElementById("2").style.display = "block";
         document.getElementById("oke").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -405,6 +441,7 @@
         document.getElementById("ide").style.display = "none";
       }
       function show3() {
+        document.getElementById("clicked").play();
         document.getElementById("3").style.display = "block";
         document.getElementById("kanan").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -425,6 +462,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show4() {
+        document.getElementById("clicked").play();
         document.getElementById("4").style.display = "block";
         document.getElementById("kanan").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -445,6 +483,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show5() {
+        document.getElementById("clicked").play();
         document.getElementById("5").style.display = "block";
         document.getElementById("kanan").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -465,6 +504,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show6() {
+        document.getElementById("clicked").play();
         document.getElementById("6").style.display = "block";
         document.getElementById("ide").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -485,6 +525,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show7() {
+        document.getElementById("clicked").play();
         document.getElementById("7").style.display = "block";
         document.getElementById("ide").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -505,6 +546,7 @@
         document.getElementById("oke").style.display = "block";
       }
       function show8() {
+        document.getElementById("clicked").play();
         document.getElementById("8").style.display = "block";
         document.getElementById("oke").style.display = "block";
         document.getElementById("lanjut").style.display = "none";
@@ -525,6 +567,7 @@
         document.getElementById("kanan").style.display = "none";
       }
       function show9() {
+        document.getElementById("clicked").play();
         document.getElementById("9").style.display = "block";
         document.getElementById("oke").style.display = "block";
         document.getElementById("lanjut").style.display = "none";
@@ -545,6 +588,7 @@
         document.getElementById("kanan").style.display = "none";
       }
       function show10() {
+        document.getElementById("clicked").play();
         document.getElementById("10").style.display = "block";
         document.getElementById("hallo").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -565,6 +609,7 @@
         document.getElementById("oke").style.display = "block";
       }
       function show11() {
+        document.getElementById("clicked").play();
         document.getElementById("11").style.display = "block";
         document.getElementById("hallo").style.display = "block";
         document.getElementById("lanjut").style.display = "none";
@@ -585,6 +630,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show12() {
+        document.getElementById("clicked").play();
         document.getElementById("12").style.display = "block";
         document.getElementById("kanan").style.display = "none";
         document.getElementById("lanjut").style.display = "none";
@@ -605,6 +651,7 @@
         document.getElementById("oke").style.display = "none";
       }
       function show13() {
+        document.getElementById("clicked").play();
         document.getElementById("13").style.display = "block";
         document.getElementById("list").style.display = "block";
         document.getElementById("lanjut").style.display = "block";
