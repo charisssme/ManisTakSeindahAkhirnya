@@ -417,7 +417,8 @@ li {
     background-image: url(../src/assets/credit.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-color: #EFF6FD;
     background-position: center;
     overflow: hidden;
   }
@@ -426,7 +427,8 @@ li {
     background-image: url(../src/assets/credit.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-color: #EFF6FD;
     background-position: center;
     overflow: hidden;
   }
@@ -435,7 +437,8 @@ li {
     background-image: url(../src/assets/credit.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-color: #EFF6FD;
     background-position: center;
     overflow: hidden;
   }
@@ -444,7 +447,8 @@ li {
     background-image: url(../src/assets/credit.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-color: #EFF6FD;
     background-position: center;
     overflow: hidden;
   }
@@ -453,7 +457,8 @@ li {
     background-image: url(../src/assets/credit.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
+    background-color: #EFF6FD;
     background-position: center;
     overflow: hidden;
   }
