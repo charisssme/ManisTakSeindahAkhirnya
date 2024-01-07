@@ -18,7 +18,7 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
   </head>
 
-  <body>
+  <body style="overflow: auto;">
     <div
       class="container"
       style="--fd: column; --jc: center; --ai: center; height: 100vh"
@@ -52,6 +52,7 @@
             position: fixed;
             top: 1%;
             left: 1%;
+            z-index: 2;
           "
           onclick="audioPlay(this)"
         />
@@ -68,6 +69,7 @@
             top: 1%;
             left: 1%;
             display: none;
+            z-index: 2;
           "
           onclick="audioPause(this)"
         />
